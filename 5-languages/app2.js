@@ -25,3 +25,6 @@ console.log(getLanguages(languagesRU));
 console.log(getLanguages(languagesDE));
 
 // Вот такой код у меня получился - правильно или нет?
+
+
+console.log('' ?? 'Yes')
