@@ -1,4 +1,5 @@
 'use strict'
+
 const addressLat = 15;
 const addressLong = 30;
 const positionLat = 100;
