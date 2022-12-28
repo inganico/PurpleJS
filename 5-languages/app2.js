@@ -10,18 +10,19 @@ function getLanguages (lang) {
     switch(lang) {
         case 'EN': 
             console.log('Hello Dima!');
-            break
+            break;
         case 'RU':
             console.log('Привет Дима!');
-            break
+            break;
         case 'DE':
             console.log('Hallo Dima!');
-            break
+            break;
         default: 
         console.log('No languages!');
-            break
+            break;
     }       
 }
+
 
 console.log(getLanguages(languagesEN));
 console.log(getLanguages(languagesRU));
