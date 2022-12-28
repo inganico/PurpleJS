@@ -4,6 +4,7 @@
 const languagesEN = 'EN'; 
 const languagesRU = 'RU';
 const languagesDE = 'DE';
+const languagesKZ = 'KZ'; // этого языка нет!
 
 function getLanguages (lang) {
     switch(lang) {
@@ -16,15 +17,19 @@ function getLanguages (lang) {
         case 'DE':
             console.log('Hallo Dima!');
             break
-            default: 
-    } return lang
+        default: 
+        console.log('No languages!');
+            break
+    }       
 }
 
 console.log(getLanguages(languagesEN));
 console.log(getLanguages(languagesRU));
 console.log(getLanguages(languagesDE));
+console.log(getLanguages(languagesKZ)); // раз его нет в условии Switch (case) выводит default - No languages!
 
-// Вот такой код у меня получился - правильно или нет?
+//Возврат функции удалил - а то что возвращается undefined(не определено) - это нормально?
 
 
-console.log('' ?? 'Yes')
+
+
