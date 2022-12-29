@@ -18,8 +18,8 @@ const positiveNumber = (array) => {
     return array
 }
 
-const result = positiveNumber(arr)
-console.log(result) // [40, 10, 1, 0, -5]
+const result = positiveNumber(arr);
+console.log(result); // [40, 10, 1, 0, -5]
 
 
 //************ Второй вариант по возрастанию *************/
@@ -27,7 +27,7 @@ console.log(result) // [40, 10, 1, 0, -5]
 const positiveNumber2= (array) => {
     for (let i = 0; i < array.length; i++) {
         for( let k = i; k < array.length; k++){
-            const arrOn = [];
+            const count = [];
             if (array[i] < array[k]) { // если
                 array[i] = array[k]; // получаем 40, 10, 1, 0; 
                 array[k] = array.push(count); // запушим в конец переменной archi и присвоем к array(результат)
@@ -36,8 +36,8 @@ const positiveNumber2= (array) => {
     }
     return array
 }
-const result2 = positiveNumber2(arr)
-console.log(result2) // [40, 10, 1, 0, -5]
+const result2 = positiveNumber2(arr);
+console.log(result2); // [40, 10, 1, 0, -5]
 
 
 //************ Третий вариант по убыванию *************/
@@ -47,16 +47,16 @@ const negativeNumber = (array) => {
     for (let i = array.length-1; i >= 0; i--) { // идем с конца массива (цикл на оборот)
         for (let k = i; k >= 0; k--) {
             if (array[i] < array[k]) { // если поменять оператор массив будет на оборот
-                const count = array[i]
-                array[i] = array[k]
-                array[k] = count
+                const count = array[i];
+                array[i] = array[k];
+                array[k] = count;
             }
         }
-    } return array
+    } return array;
 }
 
-const result3 = negativeNumber(arr)
-console.log(result3)
+const result3 = negativeNumber(arr);
+console.log(result3);
 
 
 //************ Четвертый вариант по убыванию *************/
@@ -66,12 +66,12 @@ const negativeNumber2 = (array) => {
         for (let k = i; k >= 0; k--) {
             const count = [];
             if (array[i] < array[k]) { 
-                array[i] = array[k]
-                array[k] = count.push(array)
+                array[i] = array[k];
+                array[k] = count.push(array);
             }
         }
-    } return array
+    } return array;
 }
 
-const result4 = negativeNumber2(arr)
-console.log(result4)
+const result4 = negativeNumber2(arr);
+console.log(result4);
