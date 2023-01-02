@@ -1,77 +1,64 @@
 'use strict';
 
 const arr = [1, 40, -5, 10, 0];
+const copyArr = arr.slice() // копируем массив arr
 
-//************ Первый вариант по возрастанию *************/
+// //************ Первый вариант по возрастанию *************/
 
-const positiveNumber = (array) => {
-    for (let i = 0; i < array.length; i++) {
-        for( let k = i; k < array.length; k++){
-            if (array[i] < array[k]) { // если (поменять оператор массив будет собран подругому)
-                const count = array[i]; // пусть arr cохраняет исходное значение
+const sortDescending = (array) => {
+    for (let i = 0; i <= array.length; i++) {
+        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
+            if (array[i] > array[k]) { // если (поменять оператор массив будет собран подругому)
+                let count = array[i]; // пусть arr cохраняет исходное значение
                 array[i] = array[k]; // получаем 40, 10, 1, 0; 
-                console.log(array[i]);
                 array[k] = count; // установливаем большее значение в исходное значение
-            }
+            } 
         }
     }
     return array
 }
 
-const result = positiveNumber(arr);
-console.log(result); // [40, 10, 1, 0, -5]
+const result = sortDescending(copyArr);
+console.log(result); // [40, 10, 1, 0, -5];
+console.log(arr) // [1, 40, -5, 10, 0]; // массив не мутировал
 
 
-//************ Второй вариант по возрастанию *************/
+// //************ Второй вариант по убыванию *************/
 
-const positiveNumber2= (array) => {
-    for (let i = 0; i < array.length; i++) {
-        for( let k = i; k < array.length; k++){
-            const count = [];
-            if (array[i] < array[k]) { // если
+const sortAscending = (array) => {
+    for (let i = 0; i <= array.length; i++) {
+        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
+            if (array[i] < array[k]) { // если (поменять оператор массив будет собран подругому)
+                let count = array[i]; // пусть arr cохраняет исходное значение
                 array[i] = array[k]; // получаем 40, 10, 1, 0; 
-                array[k] = array.push(count); // запушим в конец переменной archi и присвоем к array(результат)
-            }
+                array[k] = count; // установливаем большее значение в исходное значение
+            } 
         }
     }
     return array
 }
-const result2 = positiveNumber2(arr);
-console.log(result2); // [40, 10, 1, 0, -5]
 
 
-//************ Третий вариант по убыванию *************/
+const result2 = sortAscending(copyArr);
+console.log(result2);
+console.log(arr);
 
 
-const negativeNumber = (array) => {
-    for (let i = array.length-1; i >= 0; i--) { // идем с конца массива (цикл на оборот)
-        for (let k = i; k >= 0; k--) {
-            if (array[i] < array[k]) { // если поменять оператор массив будет на оборот
-                const count = array[i];
-                array[i] = array[k];
-                array[k] = count;
-            }
+// //************ Полная функция с соритровкой *************/
+
+const getSortedArr = (array, type = true) => {
+    for (let i = 0; i <= array.length; i++) {
+        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
+            if (array[i] < array[k] && type) { // если (поменять оператор массив будет собран подругому)
+                type = array[i]; // пусть arr cохраняет исходное значение
+                array[i] = array[k]; // получаем 40, 10, 1, 0; 
+                array[k] = type; // установливаем большее значение в исходное значение
+            } 
         }
-    } return array;
+    }return array
 }
-
-const result3 = negativeNumber(arr);
+const result3 = getSortedArr(copyArr, false);
 console.log(result3);
 
-
-//************ Четвертый вариант по убыванию *************/
-
-const negativeNumber2 = (array) => {
-    for (let i = array.length-1; i >= 0; i--) { // идем с конца массива (цикл на оборот)
-        for (let k = i; k >= 0; k--) {
-            const count = [];
-            if (array[i] < array[k]) { 
-                array[i] = array[k];
-                array[k] = count.push(array);
-            }
-        }
-    } return array;
-}
-
-const result4 = negativeNumber2(arr);
+const result4 = getSortedArr(copyArr, true); //(с true = не выходит - что то делаю не правильно - сломал голову) )
 console.log(result4);
