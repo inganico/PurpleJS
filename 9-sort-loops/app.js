@@ -1,64 +1,101 @@
 'use strict';
 
 const arr = [1, 40, -5, 10, 0];
-const copyArr = arr.slice() // копируем массив arr
 
-// //************ Первый вариант по возрастанию *************/
+
+//************ Первый вариант по возрастанию *************/
 
 const sortDescending = (array) => {
-    for (let i = 0; i <= array.length; i++) {
-        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
-            if (array[i] > array[k]) { // если (поменять оператор массив будет собран подругому)
-                let count = array[i]; // пусть arr cохраняет исходное значение
-                array[i] = array[k]; // получаем 40, 10, 1, 0; 
-                array[k] = count; // установливаем большее значение в исходное значение
+    let arr = array.slice()
+    for (let i = 0; i <= arr.length -1; i++) {
+        for( let j = i + 1; j <= arr.length; j++){ // сравнение убрал с i
+            if (arr[i] > arr[j]) { // если (поменять оператор массив будет собран подругому)
+                let count = arr[i]; // пусть arr cохраняет исходное значение
+                arr[i] = arr[j]; // получаем 40, 10, 1, 0; 
+                arr[j] = count; // установливаем большее значение в исходное значение
             } 
         }
     }
-    return array
+    return arr
 }
 
-const result = sortDescending(copyArr);
+const result = sortDescending(arr);
 console.log(result); // [40, 10, 1, 0, -5];
-console.log(arr) // [1, 40, -5, 10, 0]; // массив не мутировал
+console.log('********************')
 
 
 // //************ Второй вариант по убыванию *************/
 
-const sortAscending = (array) => {
-    for (let i = 0; i <= array.length; i++) {
-        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
-            if (array[i] < array[k]) { // если (поменять оператор массив будет собран подругому)
-                let count = array[i]; // пусть arr cохраняет исходное значение
-                array[i] = array[k]; // получаем 40, 10, 1, 0; 
-                array[k] = count; // установливаем большее значение в исходное значение
+const sortAscendin = (array) => {
+    let arr = array.slice()
+    for (let i = 0; i <= arr.length -1; i++) {
+        for( let j = i + 1; j <= arr.length; j++){ // сравнение убрал с i
+            if (arr[i] < arr[j]) { // если (поменять оператор массив будет собран подругому)
+                let count = arr[i]; // пусть arr cохраняет исходное значение
+                arr[i] = arr[j]; // получаем 40, 10, 1, 0; 
+                arr[j] = count; // установливаем большее значение в исходное значение
             } 
         }
     }
-    return array
+    return arr
 }
 
-
-const result2 = sortAscending(copyArr);
+const result2 = sortAscendin(arr);
 console.log(result2);
-console.log(arr);
+console.log('********************')
 
 
 // //************ Полная функция с соритровкой *************/
 
-const getSortedArr = (array, type = true) => {
-    for (let i = 0; i <= array.length; i++) {
-        for( let k = 0; k <= array.length; k++){ // сравнение убрал с i
-            if (array[i] < array[k] && type) { // если (поменять оператор массив будет собран подругому)
-                type = array[i]; // пусть arr cохраняет исходное значение
-                array[i] = array[k]; // получаем 40, 10, 1, 0; 
-                array[k] = type; // установливаем большее значение в исходное значение
-            } 
-        }
-    }return array
-}
-const result3 = getSortedArr(copyArr, false);
-console.log(result3);
 
-const result4 = getSortedArr(copyArr, true); //(с true = не выходит - что то делаю не правильно - сломал голову) )
+const SortType = {
+    DESC: 'desc',
+    ASC: 'asc',
+};
+
+const getSortedArr = (array, type = SortType.ASC) => {
+    const arr = array.slice()
+    for (let i = 0; i < arr.length -1; i++) {
+        for( let j = i + 1; j < arr.length; j++){
+            if (type === SortType.DESC && arr[i] < arr[j]) { 
+                const temp = arr[i];
+                arr[i] = arr[j]; 
+                arr[j] = temp;
+            } else if (type === SortType.ASC && arr[i] > arr[j]) {
+                const temp = arr[i];
+                arr[i] = arr[j]; 
+                arr[j] = temp;
+            }
+        }  
+    }return arr
+}
+const result3 = getSortedArr(arr, SortType.ASC);
+console.log(result3);
+console.log('********************')
+const result4 = getSortedArr(arr, SortType.DESC); 
 console.log(result4);
+console.log('********************')
+
+
+// //************ Полная функция с соритровкой от НАСТАВНИКА *************/
+
+
+const getSortedArray1 = (array, sortType = SortType.DESC) => {
+    const arrayCopy = array.slice();
+    
+    for (let i = 0; i < arrayCopy.length - 1; i++) {
+        for (let j = i + 1; j < arrayCopy.length; j++) {
+        if (sortType === SortType.DESC && arrayCopy[i] < arrayCopy[j]) {
+            [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
+        } else if (sortType === SortType.ASC && arrayCopy[i] > arrayCopy[j]) {
+            [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
+        }
+        }
+    }
+    
+    return arrayCopy;
+    }
+
+console.log (getSortedArray1(arr, SortType.ASC))
+console.log('********************')
+console.log (getSortedArray1(arr, SortType.DESC))
