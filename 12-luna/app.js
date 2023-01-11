@@ -2,30 +2,30 @@
 
 // ***** Карта *****
 
-const mapVisa = "4563-2612-1234-5464";
+const mapVisa = "4561-2612-1234-5464";
 
-// ***** Первый вариант *****
+// // ***** Первый вариант *****
 
-function mapValid(string) {
-  const joinNumber = string.split("-").join(""); 
-  let sumLuna = 0;
-  for (let i = 0; i < joinNumber.length; i++) {
+// function mapValid(string) {
+//   const joinNumber = string.split("-").join(""); 
+//   let sumLuna = 0;
+//   for (let i = 0; i < joinNumber.length; i++) {
     
-    if (i % 2 === 0) {
-      if (joinNumber[i] * 2 > 9) {
+//     if (i % 2 === 0) {
+//       if (joinNumber[i] * 2 > 9) {
     
-        sumLuna += joinNumber[i] * 2 - 9; // вот тут идет мутация
-      } else {
-        sumLuna += joinNumber[i] * 2; // и сдесь правильно?
-      }
-    }
-  }
-  return sumLuna % 10 === 0;
-}
+//         sumLuna += joinNumber[i] * 2 - 9; // вот тут идет мутация
+//       } else {
+//         sumLuna += joinNumber[i] * 2; // и сдесь правильно?
+//       }
+//     }
+//   }
+//   return sumLuna % 10 === 0;
+// }
 
 //ЭТО ФУНКЦИЯ ПОЛУЧАЕТСЯ НЕ ЧИСТАЯ!!!
 
-console.log(mapValid(mapVisa));
+// console.log(mapValid(mapVisa));
 
 // ***** Второй вариант  *****
 
@@ -51,7 +51,6 @@ const mapValid1 = (string) => {
     .split("-")
     .join("")
     .split("")
-    .map(Number)
     .reduce((acc, item, index) => {
       if (index % 2 === 0) {  // находим нечетные по порядку
         if (item * 2 > 9) { // каждую цифру не четную если она > 9 возвращаем acc+item *2 - 9
