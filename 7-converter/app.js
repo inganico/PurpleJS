@@ -2,42 +2,32 @@
 
 // курсы валют
 
-let currencyRates = {
-  'USD': '72.7',
-  'EUR': '78.3',
-  'GBR': '84.3',
-  'TRY': '3.5',
-  'RUB': '1',
-
+const Currency = {
+    USD: 0.014,
+    EUR: 0.015,
+    TRY: 0.277,
+    KZT: 6.82,
+    RUB: 1,
+  };
   // текущая валюта - currentCurrency
   // желаемая валюта - desiredCurrency
   // сумма - amount
-  currencyСonverter: function (currentCurrency, desiredCurrency, amount) {
-    const currentRate = this [currentCurrency]; // текущий курс
-    const desiredRate = this [desiredCurrency]; // желаемая валюта
-  
-    const amounts = amount * currentRate; // сумму * текущий курс
-    const convertedAmount = (amounts / desiredRate); // текущю курс / на желаемую валюту
-    switch(currentCurrency) {
-      case 'USD':
-        break;
-      case 'EUR':
-        break;
-      case 'GBR':
-        break;
-      case 'TRY':
-        break;
-      case 'RUB':
-        break;
-      default: 
-      return null;
-    }
-    return Number(convertedAmount.toFixed(2)); // остаток уменьшил - дает число
+
+    function currencyСonverter (currentCurrency, desiredCurrency, amount) {
+      if (!currentCurrency) {
+        return null;
+      } else if (!desiredCurrency) {
+        return null;
+      }
+        return (currentCurrency * amount)  * desiredCurrency;
   }
-};
 
-currencyRates.currencyСonverter();
+  currencyСonverter();
 
-console.log(currencyRates.currencyСonverter('RUB', 'EUR', 1000));
-console.log(currencyRates.currencyСonverter('EUR', 'TRY', 1000));
-console.log(currencyRates.currencyСonverter('EUI', 'RUB', 1000));
+console.log(currencyСonverter(Currency.USD, Currency.KZT, 1000));
+console.log(currencyСonverter(Currency.RUB, Currency.TRY, 1000));
+console.log(currencyСonverter(Currency.TRY, Currency.EUR, 1000));
+console.log(currencyСonverter(Currency.EDR, Currency.EUR, 1000));
+console.log(currencyСonverter(Currency.TRY, Currency.EDR, 1000));
+
+
