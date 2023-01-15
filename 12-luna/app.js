@@ -2,9 +2,9 @@
 
 // ***** Карта *****
 
-const mapVisa = "4561-2612-1234-5464";
+const Visa = "4561-2612-1234-5464";
 
-const mapValid1 = (string) => {
+const valid = (string) => {
   const splitNumber = string
     .split("-")
     .join("")
@@ -22,6 +22,6 @@ const mapValid1 = (string) => {
   return splitNumber % 10 === 0;
 };
 
-console.log(mapValid1(mapVisa));
+console.log(valid(Visa));
 
 // ЭТА ФУНКЦИЯ ЧИСТАЯ!!!
